@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+    <!-- 配置别名 -->
+    <typeAliases>
+        <typeAlias type="org.zjy.blog.entity.Article" alias="Article"/>
+        <typeAlias type="org.zjy.blog.entity.Comment" alias="Comment"/>
+        <typeAlias type="org.zjy.blog.entity.Label" alias="Label"/>
+        <typeAlias type="org.zjy.blog.entity.Account" alias="User"/>
+    </typeAliases>
+    <!-- 配置mapper -->
+    <mappers>
+        <mapper resource="org/zjy/blog/mapper/ArticleMapper.xml"/>
+        <mapper resource="org/zjy/blog/mapper/LabelMapper.xml"/>
+        <mapper resource="org/zjy/blog/mapper/CommentMapper.xml"/>
+
+    </mappers>
+</configuration>
+
