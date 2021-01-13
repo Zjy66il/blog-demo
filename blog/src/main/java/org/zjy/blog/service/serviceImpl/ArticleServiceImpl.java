@@ -2,6 +2,8 @@ package org.zjy.blog.service.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zjy.blog.config.CustomMapper;
+import org.zjy.blog.dto.ArticleDto;
 import org.zjy.blog.entity.Article;
 import org.zjy.blog.entity.Article2label;
 import org.zjy.blog.mapper.Article2labelMapper;
@@ -9,9 +11,11 @@ import org.zjy.blog.mapper.ArticleMapper;
 import org.zjy.blog.mapper.LabelMapper;
 import org.zjy.blog.service.ArticleService;
 import org.zjy.blog.service.LabelService;
+import org.mapstruct.factory.Mappers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -26,8 +30,14 @@ public class ArticleServiceImpl implements ArticleService {
     private LabelService labelService;
 
     @Override
-    public List<Article> getAllArticles() {
-        return articleMapper.selectByExample(null);
+    public List<ArticleDto> getAllArticles() {
+        List<Article> articleList = articleMapper.selectByExample(null);
+        List<ArticleDto> articleDtoList = new ArrayList<>();
+        for(Article article : articleList){
+            ArticleDto articleDto =  Mappers.getMapper(CustomMapper.class).convert(article);
+            articleDtoList.add(articleDto);
+        }
+        return articleDtoList;
     }
 
     @Override

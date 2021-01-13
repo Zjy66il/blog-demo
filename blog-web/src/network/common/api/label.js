@@ -3,7 +3,7 @@ import axios from "../request" // 导入axios实例
 // import qs from "qs"
 
 const label = {
-    // 全部新闻
+    // 全部
     getAllLabels() {
         return axios.get(`${base.blog}/labels/`);
     },

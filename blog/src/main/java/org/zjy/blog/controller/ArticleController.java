@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.zjy.blog.dto.ArticleDto;
 import org.zjy.blog.entity.Article;
 import org.zjy.blog.service.ArticleService;
 
@@ -17,8 +18,8 @@ public class ArticleController {
     ArticleService articleService;
 
     @GetMapping("/")
-    public List<Article> getAllArticles() {
-        List<Article> articleList = articleService.getAllArticles();
+    public List<ArticleDto> getAllArticles() {
+        List<ArticleDto> articleList = articleService.getAllArticles();
         return articleList;
     }
 

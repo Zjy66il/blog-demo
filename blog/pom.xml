@@ -18,6 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <map-struct-version>1.4.1.Final</map-struct-version>
     </properties>
 
     <dependencies>
@@ -30,6 +31,22 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${map-struct-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+            <version>${map-struct-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${map-struct-version}</version>
         </dependency>
 
         <dependency>
@@ -84,8 +101,6 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -113,6 +128,7 @@
                     <overwrite>true</overwrite>
                 </configuration>
             </plugin>
+
         </plugins>
         <resources>
             <resource>
