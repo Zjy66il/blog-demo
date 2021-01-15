@@ -7,7 +7,6 @@ import org.zjy.blog.entity.LabelExample;
 import org.zjy.blog.mapper.LabelMapper;
 import org.zjy.blog.service.LabelService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,8 +25,7 @@ public class LabelServiceImpl implements LabelService {
         LabelExample example = new LabelExample();
         LabelExample.Criteria criteria = example.createCriteria();
         criteria.andLabelEqualTo(content);
-        List<Label> labelList = new ArrayList<>();
-        labelList = labelMapper.selectByExample(example);
+        List<Label> labelList = labelMapper.selectByExample(example);
         if(!labelList.isEmpty()){
             return labelList.get(0);
         }

@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zjy.blog.config.CustomMapper;
 import org.zjy.blog.dto.ArticleDto;
-import org.zjy.blog.entity.Article;
-import org.zjy.blog.entity.Article2label;
+import org.zjy.blog.entity.*;
 import org.zjy.blog.mapper.Article2labelMapper;
 import org.zjy.blog.mapper.ArticleMapper;
 import org.zjy.blog.mapper.LabelMapper;
@@ -31,19 +30,26 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<ArticleDto> getAllArticles() {
-        List<Article> articleList = articleMapper.selectByExample(null);
+        List<Article> articleList = articleMapper.selectByExampleWithBLOBs(null);
+        //System.out.println(articleList.get(0).getContent());
         List<ArticleDto> articleDtoList = new ArrayList<>();
         for(Article article : articleList){
+            //System.out.println(article.getArticleId());
+           // System.out.println(article.getTitle());
+            //System.out.println(articleMapper.selectByPrimaryKey(article.getArticleId()).getTitle());
             ArticleDto articleDto =  Mappers.getMapper(CustomMapper.class).convert(article);
+            //System.out.println(articleDto.getTitle());
             articleDtoList.add(articleDto);
         }
         return articleDtoList;
     }
 
     @Override
-    public Article getArticleByID(int articleID) {
+    public ArticleDto getArticleByID(int articleID) {
 
-        return articleMapper.selectByPrimaryKey(articleID);
+        Article article = articleMapper.selectByPrimaryKey(articleID);
+        ArticleDto articleDto = Mappers.getMapper(CustomMapper.class).convert(article);
+        return articleDto;
     }
 
     @Override
@@ -60,10 +66,7 @@ public class ArticleServiceImpl implements ArticleService {
             }
             article2label.setArticleId(article.getArticleId());
             article2label.setLabel(label[i]);
-            labels.add(article2label);
-        }
-        if (labels.size() != 0){
-            res = article2labelMapper.insert((Article2label) labels);
+            res = article2labelMapper.insert(article2label);
         }
         return res;
     }

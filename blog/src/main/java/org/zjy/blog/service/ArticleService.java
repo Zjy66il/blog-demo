@@ -8,10 +8,11 @@ import java.util.List;
 public interface ArticleService {
 
     // 得到所有的文章
+    //List<Article> getAllArticles();
     List<ArticleDto> getAllArticles();
 
     // 根据id得到文章
-    Article getArticleByID(int articleID);
+    ArticleDto getArticleByID(int articleID);
 
     // 添加文章
     int insertArticle(Article article,String []label);

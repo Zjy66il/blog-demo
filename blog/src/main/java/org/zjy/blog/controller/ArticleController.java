@@ -19,20 +19,23 @@ public class ArticleController {
 
     @GetMapping("/")
     public List<ArticleDto> getAllArticles() {
-        List<ArticleDto> articleList = articleService.getAllArticles();
-        return articleList;
+       // List<ArticleDto> articleList = articleService.getAllArticles();
+        List<ArticleDto> articleDtoList = articleService.getAllArticles();
+        return articleDtoList;
     }
 
     @GetMapping("/{articleID}")
-    public Article getArticleByID(@PathVariable int articleID) {
-        Article article = articleService.getArticleByID(articleID);
-        return article;
+    public ArticleDto getArticleByID(@PathVariable int articleID) {
+        //Article article = articleService.getArticleByID(articleID);
+        ArticleDto articleDto = articleService.getArticleByID(articleID);
+        return articleDto;
     }
 
     @GetMapping("/info/{articleID}")
     public String getArticleInfoByID(@PathVariable int articleID) {
-        Article article = articleService.getArticleByID(articleID);
-        return article.getTitle();
+        //System.out.println(articleID);
+        ArticleDto articleDto = articleService.getArticleByID(articleID);
+        return articleDto.getTitle();
     }
 
     @PostMapping("/")

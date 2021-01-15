@@ -17,7 +17,7 @@ public class Article {
      *
      * @mbg.generated
      */
-    private Long publicTime;
+    private Double publicTime;
 
     /**
      *
@@ -105,7 +105,7 @@ public class Article {
      *
      * @mbg.generated
      */
-    public Long getPublicTime() {
+    public Double getPublicTime() {
         return publicTime;
     }
 
@@ -117,7 +117,7 @@ public class Article {
      *
      * @mbg.generated
      */
-    public void setPublicTime(Long publicTime) {
+    public void setPublicTime(Double publicTime) {
         this.publicTime = publicTime;
     }
 

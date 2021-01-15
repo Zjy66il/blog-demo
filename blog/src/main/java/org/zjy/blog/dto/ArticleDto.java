@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 public class ArticleDto {
     // id
-    private int articleID;
+    private int articleId;
     // 发布时间
     private long publicTime;
     // 标题

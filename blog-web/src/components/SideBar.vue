@@ -8,7 +8,7 @@
         <div class="side-inner">
           <div class="head"></div>
           <div class="content">
-            <div class="title">甜木木夕</div>
+            <div class="title">zjy</div>
             <br />
             <div class="subtitle">Be Someone</div>
             <nav
